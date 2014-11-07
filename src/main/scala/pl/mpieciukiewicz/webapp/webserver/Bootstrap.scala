@@ -11,7 +11,7 @@ class Bootstrap extends LifeCycle {
   val actorSystem = ActorSystem("webapp")
 
   override def init(servletContext: ServletContext) {
-    servletContext.mount(new RestHandler(actorSystem), "/rest/*")
+    servletContext.mount(new RestHandler(actorSystem), "/")
   }
 
   override def destroy(context: ServletContext) {

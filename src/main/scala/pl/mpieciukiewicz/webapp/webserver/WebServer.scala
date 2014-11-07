@@ -21,6 +21,7 @@ class WebServer(port: Int,
     val servletContext = new ServletContextHandler(ServletContextHandler.SESSIONS)
     servletContext.setInitParameter(ScalatraListener.LifeCycleKey, scalatraBootstrapClass.getName)
     servletContext.addEventListener(new ScalatraListener)
+    servletContext.setContextPath("/rest")
 
     val staticFilesContext: ContextHandler = createStaticFilesContext("/", "/static", "index.html")
 
@@ -52,6 +53,7 @@ class WebServer(port: Int,
 
     val requestLog = new RestRequestLog("restAccessLogger")
 
+//    val requestLog = new Slf4jRequestLog()
 //    requestLog.setLoggerName("accessLogger")
 //    requestLog.setLogDateFormat("MM/dd HH:mm:ss:SSS")
 //    requestLog.setExtended(false)
